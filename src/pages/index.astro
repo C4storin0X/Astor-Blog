@@ -1,0 +1,11 @@
+---
+import Site from '../layouts/Site.astro';
+import { getCollection } from 'astro:content';
+const articles=(await getCollection('articles',({data})=>data.status==='Published')).sort((a,b)=>(b.data.date?.getTime()||0)-(a.data.date?.getTime()||0)).slice(0,3);
+const tools=(await getCollection('tools')).slice(0,3);
+---
+<Site title="Home" description="Blog tecnico e catalogo personale di risorse di cybersecurity">
+<section class="hero"><div class="shell"><span class="eyebrow">Cybersecurity / Research / Field Notes</span><h1>Understand systems.<br/><em>Defend better.</em></h1><p class="lead">Un laboratorio personale dedicato a sicurezza informatica, analisi tecniche, threat intelligence e strumenti operativi. Meno rumore, più conoscenza applicabile.</p><div class="buttons"><a class="btn primary" href="/articoli/">Esplora gli articoli ↗</a><a class="btn" href="/tools/">Tool Library →</a></div></div></section>
+<section class="section shell"><div class="sectionhead"><div><div class="eyebrow">Knowledge base</div><h2>Ultimi articoli</h2></div><a class="inline-link" href="/articoli/">Tutti gli articoli →</a></div><div class="grid">{articles.map(a=><a class="tile" href={`/articoli/${a.id}/`}><span class="tag">{a.data.category||'Research'}</span><h3>{a.data.title}</h3><p>{a.data.description}</p><span class="meta">{a.data.date?.toLocaleDateString('it-IT')||'Appunti tecnici'} →</span></a>)}</div></section>
+<section class="section shell"><div class="sectionhead"><div><div class="eyebrow">Toolkit</div><h2>Risorse selezionate</h2></div><a class="inline-link" href="/tools/">Tutta la libreria →</a></div><div class="grid">{tools.map(t=><a class="tile" href={t.data.url} target="_blank" rel="noopener noreferrer"><span class="tag">{t.data.category||'Tools'}</span><h3>{t.data.title} ↗</h3><p>{t.data.description}</p><span class="meta">{t.data.access||'Risorsa'}</span></a>)}</div></section>
+</Site>
