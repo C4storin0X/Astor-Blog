@@ -1,21 +1,5 @@
 ---
 import '../styles/global.css';
-const { title = 'Astor Blog', description = 'Cybersecurity, research and notes' } = Astro.props;
+const {title='Astor Blog',description='Cybersecurity & research'}=Astro.props;
 ---
-<!doctype html>
-<html lang="it" data-theme="dark" data-accent="green">
-<head>
-<meta charset="utf-8"/><meta name="viewport" content="width=device-width, initial-scale=1"/>
-<meta name="description" content={description}/><title>{title} | Astor Blog</title>
-<script is:inline>try{document.documentElement.dataset.theme=localStorage.getItem('astor-theme')||'dark';document.documentElement.dataset.accent=localStorage.getItem('astor-accent')||'green'}catch(e){}</script>
-</head>
-<body>
-<header class="topbar"><div class="shell topbar-inner"><a class="brand" href="/"><span class="logo">A<span class="dot">.</span></span><span>ASTOR<span class="soft"> / BLOG</span></span></a><nav aria-label="Menu principale"><a href="/">Home</a><a href="/articoli/">Articoli</a><a href="/tools/">Cyber Tools</a></nav><div class="switches"><button id="theme-toggle" title="Tema chiaro/scuro" aria-label="Cambia tema">◐</button><button id="accent-toggle" title="Cambia colore" aria-label="Cambia colore">●</button></div></div></header>
-<main><slot/></main>
-<footer><div class="shell foot"><span>© {new Date().getFullYear()} ASTOR BLOG</span><span>Research · Security · Knowledge</span><a href="https://github.com/C4storin0X/Astor-Blog" target="_blank" rel="noopener noreferrer">GitHub ↗</a></div></footer>
-<script is:inline>
-const theme=document.querySelector('#theme-toggle');const accent=document.querySelector('#accent-toggle');
-theme?.addEventListener('click',()=>{const v=document.documentElement.dataset.theme==='dark'?'light':'dark';document.documentElement.dataset.theme=v;localStorage.setItem('astor-theme',v)});
-accent?.addEventListener('click',()=>{const opts=['green','blue','orange','violet'];const curr=document.documentElement.dataset.accent||'green';const next=opts[(opts.indexOf(curr)+1)%opts.length];document.documentElement.dataset.accent=next;localStorage.setItem('astor-accent',next)});
-</script>
-</body></html>
+<!doctype html><html lang="it"><head><meta charset="utf-8"/><meta name="viewport" content="width=device-width,initial-scale=1"/><meta name="description" content={description}/><meta name="theme-color" content="#111b25"/><title>{title} | Astor Blog</title><link rel="preconnect" href="https://fonts.googleapis.com"/><link rel="preconnect" href="https://fonts.gstatic.com" crossorigin/><link href="https://fonts.googleapis.com/css2?family=DM+Serif+Text&family=Outfit:wght@400;700;900&family=Poppins:wght@400;600;800&family=Righteous&family=Sanchez&display=swap" rel="stylesheet"/></head><body><header class="bg-white text-black border-b-4 border-black flex flex-wrap justify-between items-center gap-4 p-6"><a href="/" class="text-4xl md:text-5xl hover:underline" style="font-family:Righteous,Impact,sans-serif;color:#000">ASTOR<span style="color:#148773">.</span></a><nav aria-label="Menu principale" class="flex flex-wrap gap-6 text-lg font-bold" style="font-family:Poppins,Arial,sans-serif"><a href="/" style="color:#000">Home</a><a href="/articoli/" style="color:#000">Articoli</a><a href="/tools/" style="color:#000">Cyber Tools</a></nav></header><main><slot/></main><footer class="bg-black text-white p-6 border-t-4 border-white"><div class="cyber-layout flex flex-wrap justify-between gap-4"><span>Astor Blog · Cybersecurity & Research</span><span>Theme: <a href="https://github.com/ElianCodes/brutal" target="_blank" rel="noopener" class="underline">Brutal — ElianCodes (MIT)</a></span><a href="https://github.com/C4storin0X/Astor-Blog" class="underline" target="_blank" rel="noopener">GitHub ↗</a></div></footer></body></html>
