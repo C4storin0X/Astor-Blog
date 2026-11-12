@@ -1,0 +1,6 @@
+---
+import Site from '../../layouts/Site.astro';
+import { getCollection } from 'astro:content';
+const articles=(await getCollection('articles',({data})=>data.status==='Published')).sort((a,b)=>(b.data.date?.getTime()||0)-(a.data.date?.getTime()||0));
+---
+<Site title="Articoli"><section class="pagehead"><div class="shell"><span class="eyebrow">Research & Field Notes</span><h1>Articoli</h1><p class="lead">Guide, analisi tecniche e appunti di cybersecurity.</p></div></section><section class="section shell"><div class="grid">{articles.map(a=><a class="tile" href={`/articoli/${a.id}/`}><span class="tag">{a.data.category||'Altro'}</span><h3>{a.data.title}</h3><p>{a.data.description}</p><span class="meta">{a.data.date?.toLocaleDateString('it-IT')}</span></a>)}</div>{articles.length===0&&<p class="empty">Non ci sono ancora articoli pubblicati.</p>}</section></Site>
