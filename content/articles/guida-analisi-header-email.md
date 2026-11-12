@@ -1,5 +1,5 @@
 ---
-title: Analisi degli header email: primi controlli in un'indagine phishing
+title: "Analisi degli header email: primi controlli in un'indagine phishing"
 description: Un flusso iniziale per interpretare Received, SPF, DKIM e DMARC senza confondere autenticazione e affidabilità.
 category: DFIR
 date: 2026-11-12
