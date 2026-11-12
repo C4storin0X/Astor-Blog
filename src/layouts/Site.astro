@@ -3,14 +3,14 @@ import '../styles/global.css';
 const { title = 'Astor Blog', description = 'Cybersecurity, research and notes' } = Astro.props;
 ---
 <!doctype html>
-<html lang="it" data-theme="dark" data-accent="green">
+<html lang="it" data-theme="light" data-accent="green">
 <head>
 <meta charset="utf-8"/><meta name="viewport" content="width=device-width, initial-scale=1"/>
 <meta name="description" content={description}/><title>{title} | Astor Blog</title>
-<script is:inline>try{document.documentElement.dataset.theme=localStorage.getItem('astor-theme')||'dark';document.documentElement.dataset.accent=localStorage.getItem('astor-accent')||'green'}catch(e){}</script>
+<script is:inline>try{document.documentElement.dataset.theme=localStorage.getItem('astor-theme')||'light';document.documentElement.dataset.accent=localStorage.getItem('astor-accent')||'green'}catch(e){}</script>
 </head>
 <body>
-<header class="topbar"><div class="shell topbar-inner"><a class="brand" href="/"><span class="logo">A<span class="dot">.</span></span><span>ASTOR<span class="soft"> / BLOG</span></span></a><nav aria-label="Menu principale"><a href="/">Home</a><a href="/articoli/">Articoli</a><a href="/tools/">Cyber Tools</a></nav><div class="switches"><button id="theme-toggle" title="Tema chiaro/scuro" aria-label="Cambia tema">◐</button><button class="accent-button" id="accent-toggle" title="Cambia colore" aria-label="Cambia colore">●</button></div></div></header>
+<header class="topbar"><div class="shell topbar-inner"><a class="brand" href="/"><span class="logo">A<span class="dot">.</span></span><span>ASTOR<span class="soft"> / BLOG</span></span></a><nav aria-label="Menu principale"><a href="/">Home</a><a href="/articoli/">Articoli</a><a href="/tools/">Cyber Tools</a></nav><div class="switches"><button id="theme-toggle" title="Tema chiaro/scuro" aria-label="Cambia tema">◐</button><button id="accent-toggle" title="Cambia colore" aria-label="Cambia colore">●</button></div></div></header>
 <main><slot/></main>
 <footer><div class="shell foot"><span>© {new Date().getFullYear()} ASTOR BLOG</span><span>Research · Security · Knowledge</span><a href="https://github.com/C4storin0X/Astor-Blog" target="_blank" rel="noopener noreferrer">GitHub ↗</a></div></footer>
 <script is:inline>
