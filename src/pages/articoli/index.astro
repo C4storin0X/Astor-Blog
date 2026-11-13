@@ -1,7 +1,6 @@
 ---
 import Site from '../../layouts/Site.astro';
-import {Card,Button} from '@eliancodes/brutal-ui';
 import {getCollection} from 'astro:content';
 const articles=(await getCollection('articles',({data})=>data.status==='Published')).sort((a,b)=>(b.data.date?.getTime()||0)-(a.data.date?.getTime()||0));
 ---
-<Site title="Articoli"><div class="bg-green-theme p-6 md:p-10 min-h-screen"><div class="cyber-layout"><Card><h1 class="text-5xl md:text-7xl mb-4" style="font-family:'DM Serif Text',Georgia,serif">Articoli</h1><p class="text-xl mb-8">Guide, ricerche e appunti di cybersecurity.</p><div class="grid md:grid-cols-2 lg:grid-cols-3 gap-8">{articles.map(a=><article class="cyber-card"><p class="uppercase text-xs font-extrabold">{a.data.category||'Research'} · {a.data.date?.toLocaleDateString('it-IT')}</p><h2 class="text-2xl font-extrabold my-5">{a.data.title}</h2><p class="mb-6">{a.data.description}</p><Button href={`/articoli/${a.id}/`}>Leggi →</Button></article>)}</div>{articles.length===0&&<p>Non ci sono articoli pubblicati.</p>}</Card></div></div></Site>
+<Site title="Articoli"><div class="wrap"><section class="page-head"><span class="eyebrow">01 // RESEARCH ARCHIVE</span><h1>Field notes<span style="color:var(--accent)">_</span></h1><p class="lead">Guide, ricerche e appunti operativi sulla cybersecurity.</p></section><section class="section"><div class="grid">{articles.map(a=><a class="entry" href={`/articoli/${a.id}/`}><span class="tag">{a.data.category||'Research'}</span><h3>{a.data.title}</h3><p>{a.data.description}</p><span class="meta">{a.data.date?.toLocaleDateString('it-IT')} · READ ↗</span></a>)}</div>{articles.length===0&&<p>Non ci sono articoli pubblicati.</p>}</section></div></Site>
