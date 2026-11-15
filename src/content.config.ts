@@ -7,7 +7,7 @@ const articles = defineCollection({
   schema: z.object({
     title: z.string(), description: z.string().optional(),
     category: z.string().optional(), date: z.coerce.date().optional(),
-    status: z.string().default('Draft'), cover: z.string().optional()
+    status: z.string().default('Draft'), cover: z.string().optional(), video_url: z.string().optional()
   })
 });
 const tools = defineCollection({
