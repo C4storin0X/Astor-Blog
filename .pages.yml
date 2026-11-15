@@ -40,6 +40,9 @@ content:
       - name: cover
         label: Immagine di copertina
         type: image
+      - name: video_url
+        label: Link video YouTube o Vimeo
+        type: string
       - name: body
         label: Contenuto
         type: rich-text
