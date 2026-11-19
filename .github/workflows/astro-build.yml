@@ -1,7 +1,7 @@
 name: Astro build
 on:
   push:
-    branches: [main, theme/brutal-original]
+    branches: [main, theme/brutal-original, theme/openblog-cyber-media]
   pull_request:
     branches: [main]
 jobs:
